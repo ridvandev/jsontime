@@ -32,4 +32,8 @@ func Test_DateTime(t *testing.T) {
 	assert.Equal(t, rc.DateTime{}, empty.Date)
 	assert.Equal(t, time.Time{}, empty.Date.Time)
 	assert.Equal(t, true, empty.Date.Time.IsZero())
+
+	emptyTimeJsonTest, err := json.Marshal(empty)
+	assert.Nil(t, err)
+	assert.Equal(t, emptyTimeJson, string(emptyTimeJsonTest))
 }

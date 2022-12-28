@@ -10,6 +10,9 @@ type DateTime struct {
 }
 
 func (t DateTime) MarshalJSON() ([]byte, error) {
+	if t.Time.IsZero() {
+		return json.Marshal("")
+	}
 	return json.Marshal(t.Time.Format("2006-01-02T15:04:05.000Z"))
 }
 
